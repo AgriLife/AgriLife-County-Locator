@@ -46,7 +46,7 @@ class Ajax {
       return $aReturn;
     }
 
-    if(!$transient){
+    if (!$transient){
 
       $client = new \SoapClient("https://agrilifepeople.tamu.edu/api/v4.cfc?wsdl");
       
@@ -61,7 +61,7 @@ class Ajax {
         'ActiveOnly' => true
       );
       
-      try{
+      try {
         $results = $client->__call($method,$arguments);
 
         if ($results['ResultCode'] == 200){
@@ -82,7 +82,7 @@ class Ajax {
             // Change phone number to desired format.
             $filtered[$key]['unitphonenumber'] = str_replace( '.', '-', $value['unitphonenumber'] );
           }
-          
+
           // Add filtered array to database as transient
           set_transient( 'county_office_locator', $filtered, 4*WEEK_IN_SECONDS );
         }
