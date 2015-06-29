@@ -20,12 +20,6 @@ define( 'AG_COU_TEMPLATE_PATH', AG_COU_DIR_PATH . 'view' );
 
 require AG_COU_DIR_PATH . 'vendor/autoload.php';
 
-// if(file_exists(AG_COU_DIR_PATH . 'vendor/autoload.php')){
-//   echo 'exists';
-// } else {
-//   echo 'doesn\'t exist';
-// }
-
 // Register plugin activation functions
 $activate = new \AgriLife\Core\Activate;
 register_activation_hook( __FILE__, array( $activate, 'run') );
