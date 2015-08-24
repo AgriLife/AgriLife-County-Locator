@@ -8,7 +8,6 @@ class Ajax {
     
     $applicationID = 3;
     $method = 'getUnits';
-    $location = "https://agrilifepeople.tamu.edu/api/v4.cfc?wsdl";
     $transient = get_transient('county_office_locator');
 
     function associateAPI($apiResults) {
@@ -47,8 +46,18 @@ class Ajax {
     }
 
     if (!$transient){
-
-      $client = new \SoapClient("https://agrilifepeople.tamu.edu/api/v4.cfc?wsdl");
+      $client = new \SoapClient("https://agrilifepeople-api.tamu.edu/api/v4.cfc?wsdl", array(
+        'trace' => 1, 
+        'exception' => 0,
+        'encoding' => 'UTF-8',
+        'stream_context' => stream_context_create(array(
+          'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => false,
+          )
+        ))
+      ));
       
       $arguments = array(
         'SiteID' => $applicationID,
@@ -63,7 +72,6 @@ class Ajax {
       
       try {
         $results = $client->__call($method,$arguments);
-
         if ($results['ResultCode'] == 200){
           $dataObj = $results['ResultQuery']->enc_value;
           
