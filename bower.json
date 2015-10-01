@@ -2,6 +2,7 @@
   "name": "agrilife-county-office-locator",
   "version": "1.0.0",
   "dependencies": {
-    "jquery-cookie": "~1.4.1"
+    "jquery-cookie": "~1.4.1",
+    "foundation": "zurb/bower-foundation"
   }
 }
