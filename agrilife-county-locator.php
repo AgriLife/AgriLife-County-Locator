@@ -21,11 +21,11 @@ define( 'AG_COU_TEMPLATE_PATH', AG_COU_DIR_PATH . 'view' );
 require AG_COU_DIR_PATH . 'vendor/autoload.php';
 
 // Register plugin activation functions
-$activate = new \AgriLife\Core\Activate;
+$activate = new \AgriLife\OfficeLocator\Activate;
 register_activation_hook( __FILE__, array( $activate, 'run') );
 
 // Register plugin deactivation functions
-$deactivate = new \AgriLife\Core\Deactivate;
+$deactivate = new \AgriLife\OfficeLocator\Deactivate;
 register_deactivation_hook( __FILE__, array( $deactivate, 'run' ) );
 
 $ext_asset = new \AgriLife\OfficeLocator\Asset();
