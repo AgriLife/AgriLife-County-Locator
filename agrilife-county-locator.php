@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: AgriLife County Office Locator
- * Plugin URI: https://github.com/AgriLife/AgriLife-County-Office-Locator
+ * Plugin URI: https://github.com/AgriLife/AgriLife-County-Locator
  * Description: County Office Locator Widget for AgriLife Extension sites
  * Version: 1.0
  * Author: Zach Watkins
