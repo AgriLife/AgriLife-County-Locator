@@ -53,9 +53,9 @@ AgriLife.Location = class Location
         console.log('error');
     ).then( (data) =>
       counties = JSON.parse(Ag.counties)
-      office = _.findWhere( JSON.parse(Ag.counties), { "unitname": "#{@cookie.county} County Office" } )
-      @cookie.phone = office.unitphonenumber
-      @cookie.email = office.unitemailaddress
+      office = _.findWhere( JSON.parse(Ag.counties), { "unit_name": "#{@cookie.county} County Office" } )
+      @cookie.phone = office.phone_number
+      @cookie.email = office.email_address
     ).done( (data) =>
       @makeCookie()
       @getCookieLocation()

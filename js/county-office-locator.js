@@ -86,10 +86,10 @@
           var counties, office;
           counties = JSON.parse(Ag.counties);
           office = _.findWhere(JSON.parse(Ag.counties), {
-            "unitname": "" + _this.cookie.county + " County Office"
+            "unit_name": "" + _this.cookie.county + " County Office"
           });
-          _this.cookie.phone = office.unitphonenumber;
-          return _this.cookie.email = office.unitemailaddress;
+          _this.cookie.phone = office.phone_number;
+          return _this.cookie.email = office.email_address;
         };
       })(this)).done((function(_this) {
         return function(data) {

@@ -7,9 +7,9 @@
       $transient = get_transient('county_office_locator');
       foreach($transient as &$value){
         $office = array(
-          'county'=>str_replace(' County Office', '', $value['unitname']),
-          'phone'=>$value['unitphonenumber'],
-          'email'=>$value['unitemailaddress']
+          'county'=>str_replace(' County Office', '', $value['unit_name']),
+          'phone'=>$value['phone_number'],
+          'email'=>$value['email_address']
         );
         echo '<option label="' . $office['county'] . '" value="' . str_replace('"', '\'', json_encode($office)) . '">' . $office['county'] . "</option>\n";
       }
