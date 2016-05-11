@@ -47,5 +47,7 @@ js/admin.min.js
 # Ignore dependencies using package control
 js/lib/*
 node_modules
-/vendor/
+vendor/*
+!vendor/composer/
+# ignore vendor because of PHP error with new version of composer autoload
 bower_components
