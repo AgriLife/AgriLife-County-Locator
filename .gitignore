@@ -48,7 +48,6 @@ js/admin.min.js
 js/lib/*
 node_modules
 vendor/*
-!vendor/autoload.php
 !vendor/composer/
 # ignore vendor because of PHP error with new version of composer autoload
 bower_components
