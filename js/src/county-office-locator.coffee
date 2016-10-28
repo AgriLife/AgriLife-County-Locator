@@ -17,6 +17,7 @@ AgriLife.Location = class Location
 
   getNewLocation: () ->
     locator = navigator.geolocation.getCurrentPosition @locationSuccess, @locationError
+    return
 
   makeCookie: () ->
     $.cookie 'tamu_ext_location', JSON.stringify(@cookie),
@@ -37,7 +38,7 @@ AgriLife.Location = class Location
 
   getCounty: (lat, long) ->
     $.ajax(
-      url: 'http://data.fcc.gov/api/block/find'
+      url: '//data.fcc.gov/api/block/find'
       data:
         latitude: lat
         longitude: long
@@ -49,6 +50,7 @@ AgriLife.Location = class Location
         @cookie.long = long
         @cookie.county = data.County.name
         @cookie.state = data.State.name
+        return
       error: (data) =>
         console.log('error');
     ).then( (data) =>
@@ -56,14 +58,15 @@ AgriLife.Location = class Location
       office = _.findWhere( JSON.parse(Ag.counties), { "unit_name": "#{@cookie.county} County Office" } )
       @cookie.phone = office.phone_number
       @cookie.email = office.email_address
+      return
     ).done( (data) =>
       @makeCookie()
       @getCookieLocation()
     )
 
   showInfo: () ->
-    template = $('script#county-info').html()
-    contactInfo = _.template template, @cookie
+    template = _.template $('script#county-info').html()
+    contactInfo = template @cookie
     $('#county-office-location').html(contactInfo)
     if $('#county-office-list-title').text().indexOf('Not your county?') < 0
       $('#county-office-list').hide()

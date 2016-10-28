@@ -30,7 +30,7 @@
 
     Location.prototype.getNewLocation = function() {
       var locator;
-      return locator = navigator.geolocation.getCurrentPosition(this.locationSuccess, this.locationError);
+      locator = navigator.geolocation.getCurrentPosition(this.locationSuccess, this.locationError);
     };
 
     Location.prototype.makeCookie = function() {
@@ -60,7 +60,7 @@
 
     Location.prototype.getCounty = function(lat, long) {
       return $.ajax({
-        url: 'http://data.fcc.gov/api/block/find',
+        url: '//data.fcc.gov/api/block/find',
         data: {
           latitude: lat,
           longitude: long,
@@ -73,7 +73,7 @@
             _this.cookie.lat = lat;
             _this.cookie.long = long;
             _this.cookie.county = data.County.name;
-            return _this.cookie.state = data.State.name;
+            _this.cookie.state = data.State.name;
           };
         })(this),
         error: (function(_this) {
@@ -89,7 +89,7 @@
             "unit_name": "" + _this.cookie.county + " County Office"
           });
           _this.cookie.phone = office.phone_number;
-          return _this.cookie.email = office.email_address;
+          _this.cookie.email = office.email_address;
         };
       })(this)).done((function(_this) {
         return function(data) {
@@ -101,8 +101,8 @@
 
     Location.prototype.showInfo = function() {
       var contactInfo, template;
-      template = $('script#county-info').html();
-      contactInfo = _.template(template, this.cookie);
+      template = _.template($('script#county-info').html());
+      contactInfo = template(this.cookie);
       $('#county-office-location').html(contactInfo);
       if ($('#county-office-list-title').text().indexOf('Not your county?') < 0) {
         $('#county-office-list').hide();
