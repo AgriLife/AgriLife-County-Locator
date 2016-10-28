@@ -41,8 +41,7 @@ cache
 
 # No need to version control compiled files
 css/*.css
-js/public.min.js
-js/admin.min.js
+js/*.js
 
 # Ignore dependencies using package control
 js/lib/*
