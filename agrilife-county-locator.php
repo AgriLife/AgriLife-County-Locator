@@ -10,8 +10,6 @@
  * License: GPL2+
  */
 
-// require 'vendor/autoload.php';
-
 define( 'AG_COU_DIRNAME', 'agrilife-county-locator' );
 define( 'AG_COU_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AG_COU_DIR_FILE', __FILE__ );
