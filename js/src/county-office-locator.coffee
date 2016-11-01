@@ -34,7 +34,17 @@ AgriLife.Location = class Location
     @getCounty(lat, long)
 
   locationError: (data) ->
-    console.log 'There was an error'
+    err = 'There was an error';
+    if typeof data == 'object'
+      if typeof data.message is 'string' and data.message.length > 0
+        err += ': ' + data.message
+      else if typeof data.code is 'number'
+        switch data.code
+          when 1 then err += ': Permission denied'
+          when 2 then err += ': Position unavailable'
+          when 3 then err += ': Timeout'
+          else break
+    console.log err;
 
   getCounty: (lat, long) ->
     $.ajax(
