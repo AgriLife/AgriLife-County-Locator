@@ -74,5 +74,3 @@ bower_components/html5shiv/
 !bower_components/html5shiv/dist/html5shiv.js
 css/src
 js/src
-# Prevent Composer files from being loaded if they are only used for PHP5.6+
-vendor/composer/autoload_static.php
