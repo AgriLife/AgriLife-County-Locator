@@ -8,7 +8,7 @@
   },
   "repository": "https://github.com/agrilife/agrilife-county-locator",
   "author": "Zachary Watkins",
-  "license": "GPL2+",
+  "license": "GPL-2.0+",
   "devDependencies": {
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-compass": "~0.6.0",
