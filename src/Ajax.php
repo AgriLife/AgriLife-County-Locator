@@ -15,9 +15,9 @@ class Ajax {
       'validation_key' => base64_encode( md5( $applicationID . AGRILIFE_API_KEY, true ) ),
     );
     $transientname = 'county_office_locator';
-    
+
     $transient = get_transient( $transientname );
-    
+
     if (!$transient){
       try {
         $apidata = $this->make_people_api_call( $method, $data );
@@ -56,7 +56,7 @@ class Ajax {
     $url = 'https://agrilifepeople.tamu.edu/api/';
 
     switch ($method){
-      
+
       case "units" :
         $data = array_merge( array(
           'limit_to_active' =>  0,
@@ -67,7 +67,7 @@ class Ajax {
           'exclude_units' => null,
         ), $data );
         break;
-        
+
       case "people" :
         $data = array_merge( array(
           'person_active_status' => null,
@@ -81,8 +81,8 @@ class Ajax {
           'include_specializations' => 1,
         ), $data );
         break;
-        
-      default: 
+
+      default:
         exit("$function is not defined in the switch statement");
     }
 
@@ -90,33 +90,34 @@ class Ajax {
 
     if (!empty($data))
       $url = sprintf("%s?%s", $url, http_build_query($data));
-    
+
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    
+
     $curl_response = curl_exec($curl);
     if ($curl_response === false) {
       $info = curl_getinfo($curl);
       curl_close($curl);
-      
+
       echo "<pre>Error occurred during curl exec.<br/>Additional info:<br/>";
       echo "Curl Response:<br/>";
+      unset($curl_response['url']);
       print_r($curl_response);
       echo "Info:<br/>";
       print_r($info);
       die('</pre>');
     }
-    
+
     $response = array(
       'url' => $url,
       'json' => json_decode($curl_response, true),
       'raw' => $curl_response,
     );
-    
+
     curl_close($curl);
-    
+
     return $response;
   }
 }
