@@ -1,6 +1,6 @@
 {
   "name": "agrilife-county-locator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "County Office Locator Widget for AgriLife Extension sites",
   "main": "agrilife-county-locator.php",
   "scripts": {

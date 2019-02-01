@@ -75,7 +75,10 @@ AgriLife.Location = class Location
     )
 
   showInfo: () ->
+    saveSettings = _.templateSettings
+    _.templateSettings = interpolate : /\{\{(.+?)\}\}/g
     template = _.template $('script#county-info').html()
+    _.templateSettings = saveSettings
     contactInfo = template @cookie
     $('#county-office-location').html(contactInfo)
     if $('#county-office-list-title').text().indexOf('Not your county?') < 0
